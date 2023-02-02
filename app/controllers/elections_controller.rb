@@ -2,7 +2,12 @@ class ElectionsController < ApplicationController
   def create
     ballots = []
     create_params[:ballots].each do |ballot|
-      ballots << Ballot.create(ballot)
+      options = []
+      ballot[:options].each do |option_value|
+        options << Option.new(value: option_value)
+      end
+
+      ballots << Ballot.new(name: ballot[:name], type: ballot[:type], options: options)
     end
 
     @election = Election.create(

@@ -1,7 +1,6 @@
 class Ballot < ApplicationRecord
   belongs_to :election
-
-  serialize :options
+  has_many :options
 
   Ballot.inheritance_column = :inheritance_type
 end
