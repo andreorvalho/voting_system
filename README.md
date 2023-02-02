@@ -12,7 +12,7 @@ Endpoints:
 1. POST `/elections` -  This endpoint creates an election with the give name and ballots. Responds with the created object(data + id)
 
 body example:
-{
+```{
   "name": "Food Preferences",
   "ballots": [
     {
@@ -42,9 +42,9 @@ body example:
     }
   ]
 }
-
+```
 response example:
-
+```
 {
   "id": "1"
   "name": "Food Preferences",
@@ -76,28 +76,28 @@ response example:
     }
   ]
 }
-
+```
 2. POST `/registrations` -  creates a registration to a given voter and election
 
 body example:
-
+```
 {
   "voter_id": "1"
   "election_id": "1",
 }
-
+```
 response example:
-
+```
 {
   "status": "ok",
   "error": "if there is an error is described here"
 }
-
+```
 3. POST `/responses` -  To create a response a user has to send it's voter id and the election id that they are answering to.
 Then the answers need to be ordered in order the ballots are on the election
 
 body example:
-
+```
 {
   "voter_id": "1",
   "election_id": "1",
@@ -107,9 +107,9 @@ body example:
     "answer"
   ]
 }
-
+```
 response example:
-
+```
 {
   [
     {
@@ -132,23 +132,24 @@ response example:
     }
   ]
 }
-
+```
 4. PUT `/responses/1` -  To update a response a user has to send it's id and the new value or option
 
 body example:
-
+```
 {
   "id": "1",
   "voter_id": "1",
   "election_id": "1",
   "value": "answer"
 }
-
+```
 response example:
-
+```
 {
   "id": "1",
   "voter_id": "1",
   "election_id": "1",
   "value": "answer"
 }
+```
