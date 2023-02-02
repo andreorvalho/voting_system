@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_113030) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_113345) do
   create_table "ballots", force: :cascade do |t|
     t.string "name"
     t.string "type"
@@ -27,6 +27,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_113030) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registrations", force: :cascade do |t|
+    t.integer "voter_id", null: false
+    t.integer "election_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_registrations_on_election_id"
+    t.index ["voter_id"], name: "index_registrations_on_voter_id"
+  end
+
   create_table "voters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -34,4 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_113030) do
   end
 
   add_foreign_key "ballots", "elections"
+  add_foreign_key "registrations", "elections"
+  add_foreign_key "registrations", "voters"
 end
