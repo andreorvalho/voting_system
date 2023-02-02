@@ -33,13 +33,19 @@ RSpec.describe "Elections", type: :request do
       ]
     }
 
-    it 'returns success' do
+    it 'returns success and adds elections and ballots' do
       post '/elections', params: { name: name, ballots: ballots }
 
       expect(response.status).to eq(200)
       expect(JSON.parse(response.body)['name']).to eq(name)
       expect(Election.last.name).to eq(name)
       expect(Ballot.all.size).to eq(ballots.size)
+    end
+
+    it 'returns error when no required params are given' do
+      expect {
+        post '/elections'
+      }.to raise_error(ActionController::ParameterMissing)
     end
   end
 end

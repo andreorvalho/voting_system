@@ -16,6 +16,7 @@ class ElectionsController < ApplicationController
   private
 
   def create_params
+    params.require([:name, :ballots])
     params.permit(:name, ballots: [:name, :type, options: []])
   end
 end
