@@ -12,5 +12,11 @@ RSpec.describe "Registrations", type: :request do
       expect(Registration.last.voter).to eq(voter)
       expect(Registration.last.election).to eq(election)
     end
+
+    it 'returns error when no required params are given' do
+      expect {
+        post '/registrations'
+      }.to raise_error(ActionController::ParameterMissing)
+    end
   end
 end
