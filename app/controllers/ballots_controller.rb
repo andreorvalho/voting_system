@@ -1,2 +1,0 @@
-class BallotsController < ApplicationController
-end

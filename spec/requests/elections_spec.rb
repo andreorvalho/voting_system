@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Elections", type: :request do
-  describe "POST /create" do
+  describe "POST /elections" do
     let(:name) { 'primer-minister-election' }
     let(:ballots) {
       [

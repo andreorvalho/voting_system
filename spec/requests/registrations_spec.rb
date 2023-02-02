@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Registrations", type: :request do
-  describe "POST /create" do
+  describe "POST /registrations" do
     let(:voter) { create(:voter) }
     let(:election) { create(:election) }
 
